@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
 import './App.css';
+import Movieee from "./componet/MovieList"
+import Navv from "./componet/Nav"
+import Move from './Drive';
+
+
 
 function App() {
+  const [show,setshow]=useState(false)
+  const [film,setfilm]=useState(false)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navv/>
+      {film && <Movieee/>}
+     
+      <button onClick={()=>setfilm(true)}>show me best film </button>
+      <button onClick={()=>setfilm(false)}>hide me best film </button>
+      <button onClick={()=>setshow(false)}>hide</button>
+      <button onClick={()=>setshow(true)}>show</button>
+      
+      {show && <Move/>}
+      
     </div>
   );
 }
